@@ -119,6 +119,23 @@ class TestGame(TestCase):
         self.game.add_frame(Frame(5, 5))    # Spare
         self.assertEqual(self.game.total_score, 90)
 
+    def test_score_with_regular_simple_scores(self):
+        """
+        This is to test the scoring works with some regular casual rolls.
+        Game and score was created using https://www.bowlinggenius.com/.
+        """
+        self.game.add_frame(Frame(8, 2))
+        self.game.add_frame(Frame(6, 4))
+        self.game.add_frame(Frame(3, 2))
+        self.game.add_frame(Frame(6, 2))
+        self.game.add_frame(Frame(1, 3))
+        self.game.add_frame(Frame(4, 5))
+        self.game.add_frame(Frame(4, 3))
+        self.game.add_frame(Frame(9, 1))
+        self.game.add_frame(Frame(10))
+        self.game.add_frame(Frame(0, 2))
+        self.assertEqual(self.game.total_score, 96)
+
 
 class TestFrame(TestCase):
     def test_valid_frames(self):
