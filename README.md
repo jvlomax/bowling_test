@@ -12,6 +12,10 @@ This programme doesn't run, it just tests.
 ## Testing
 Run the `test_bowling.py` script in the python version of your choice:
 
-`python test_bowling.py`
+`python -m unittest test_bowling.py`
+
+or use a test runner like pytest
+
+`pytest test_bowling.py`
 
 If all tests pass, you have success. If not, adjust flux capacitors and try again.
