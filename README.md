@@ -1,6 +1,11 @@
 # Bowling game test
 A simple tech test to create a class that can keep track of a bowling game.
 
+## Requirements
+To run the tests, you will have to install unittest2. 
+This can be done by installing from the requirements file
+`pip install -r requirements.txt`
+
 ## Running
 This programme doesn't run, it just tests.
 

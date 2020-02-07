@@ -22,7 +22,7 @@ class TestGame(TestCase):
             self.game.add_frame(Frame(10))
         self.game.add_frame(Frame(10, 10, 10))
         self.assertTrue(self.game.is_perfect_game)
-        self.assertEqual(self.game.total_scores, 300)
+        self.assertEqual(self.game.total_score, 300)
         self.assertFalse(self.game.is_gutter_game)
 
     def test_gutter_game(self):
@@ -69,7 +69,7 @@ class TestGame(TestCase):
     def test_score_with_strike(self):
         """Basic test to ensure strikes are calculated correctly.
         This is test by rolling a strike, followed by a (5, 3) and a (6, 3).
-        We should have (10 + 5 + 3) + 8 + 9 points"""
+        We should have (10 + 5 + 3) + 8 + 9 points == 35"""
         self.game.add_frame(Frame(10))  # Strike
         self.game.add_frame(Frame(5, 3))
         self.game.add_frame(Frame(6, 3))
@@ -78,7 +78,7 @@ class TestGame(TestCase):
     def test_consecutive_strikes(self):
         """
         Ensure score is calculated correctly if we roll several strikes in a row.
-        The score should be  (10 + 10 + 10) + (10 + 10 + 5) + (10 + 5 + 3) + 8 + 9 == 102.
+        The score should be  (10 + 10 + 10) + (10 + 10 + 5) + (10 + 5 + 3) + 8 + 9 == 90.
         """
         self.game.add_frame(Frame(10))  # Strike
         self.game.add_frame(Frame(10))  # Strike
@@ -117,7 +117,7 @@ class TestGame(TestCase):
         self.game.add_frame(Frame(7, 3))    # Spare
         self.game.add_frame(Frame(10))      # Strike
         self.game.add_frame(Frame(5, 5))    # Spare
-        self.assertEqual(self.game.total_score, 100)
+        self.assertEqual(self.game.total_score, 90)
 
 
 class TestFrame(TestCase):
@@ -154,7 +154,7 @@ class TestFrame(TestCase):
 
     def test_open_frame(self):
         """If there is neither a spare or a strike, the frame should be considered an open frame."""
-        frame = Frame(2,5)
+        frame = Frame(2, 5)
         self.assertTrue(frame.is_open_frame)
 
     def test_not_open_frame(self):
